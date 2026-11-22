@@ -1,6 +1,5 @@
-/*********************************************************
- SMART WASTE SORTING SYSTEM
- QUEUE VERSION (FIXED)
+
+ SMART WASTE SORTING SYSTEM ESP32 Code
 
  FEATURES:
  - Conveyor continuous
