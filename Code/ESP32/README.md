@@ -2,22 +2,29 @@
  SMART WASTE SORTING SYSTEM ESP32 Code
 
 #define BLYNK_TEMPLATE_ID "TMPL6Kx1VEpYC"
+
 #define BLYNK_TEMPLATE_NAME "Alert notification"
+
 #define BLYNK_AUTH_TOKEN "vgvQj6SZL05Wi3XK5N_eMT_I2BkE5IEs"
 
 
 #include <WiFi.h>
+
 #include <WiFiClient.h>
+
 #include <BlynkSimpleEsp32.h>
+
 #include "HX711.h"
+
 #include <ESP32Servo.h>
 
 
 
 // ================= WIFI =================
 
-char ssid[] = "A06";
-char pass[] = "xlcu3689";
+char ssid[] = "";
+
+char pass[] = "";
 
 
 
@@ -25,6 +32,7 @@ char pass[] = "xlcu3689";
 // ================= HX711 =================
 
 #define HX711_DT 4
+
 #define HX711_SCK 5
 
 
@@ -45,7 +53,9 @@ Servo gateServo;
 
 
 const int NORMAL_POS  = 0;
+
 const int PLASTIC_POS = 60;
+
 const int METAL_POS   = 170;
 
 
