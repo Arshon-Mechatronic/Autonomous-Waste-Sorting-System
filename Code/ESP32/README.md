@@ -88,16 +88,17 @@ bool lastS2 = false;
 
 
 
-// =================================================
-// QUEUE SYSTEM
-// =================================================
+
+ QUEUE SYSTEM
 
 
 #define QUEUE_SIZE 10
 
 
 #define METAL   1
+
 #define PLASTIC 2
+
 #define PAPER   3
 
 
