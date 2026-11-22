@@ -1,20 +1,6 @@
 
  SMART WASTE SORTING SYSTEM ESP32 Code
 
- FEATURES:
- - Conveyor continuous
- - Raspberry Pi sends Plastic/Paper
- - Proximity sensors detect Metal
- - FIFO object queue
- - IR triggers servo sorting
- - Non-blocking servo
- - Blynk bin reminder
- - HX711 weight monitoring
-
- PART 1/4
-*********************************************************/
-
-
 #define BLYNK_TEMPLATE_ID "TMPL6Kx1VEpYC"
 #define BLYNK_TEMPLATE_NAME "Alert notification"
 #define BLYNK_AUTH_TOKEN "vgvQj6SZL05Wi3XK5N_eMT_I2BkE5IEs"
