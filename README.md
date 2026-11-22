@@ -24,7 +24,7 @@ Test the detection system using a conveyor belt setup.
 
 Develop an automated waste separation mechanism.
 
-4. Hardware Components
+3. Hardware Components
 
 Raspberry Pi 5
 
