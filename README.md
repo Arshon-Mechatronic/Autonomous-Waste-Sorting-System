@@ -13,13 +13,18 @@ Metal
 A Raspberry Pi 5 and camera are used to detect waste materials in real time.
 
 2. Project Objectives
+   
 Develop an AI-based waste detection and sorting system.
+
 Identify paper, plastic caps, and metal waste.
+
 Implement an object detection model on a Raspberry Pi 5.
+
 Test the detection system using a conveyor belt setup.
+
 Develop an automated waste separation mechanism.
 
-3. Hardware Components
+4. Hardware Components
 
 Raspberry Pi 5
 Raspberry Pi Camera Module V2.1 (Sony IMX219)
