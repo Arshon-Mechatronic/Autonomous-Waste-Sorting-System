@@ -1,9 +1,11 @@
 # Autonomous-Waste-Sorting-System
 
 1. Project Overview
+   
 This project focuses on developing an automated waste detection and sorting system using computer vision and artificial intelligence.
 
 The system aims to identify and classify different types of waste materials, including:
+
 Paper
 Plastic Caps
 Metal
