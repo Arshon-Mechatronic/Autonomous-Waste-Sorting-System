@@ -1,11 +1,30 @@
+ ESP32 Firmware
 
- SMART WASTE SORTING SYSTEM ESP32 Code
+ 1. Overview
 
-#define BLYNK_TEMPLATE_ID "TMPL6Kx1VEpYC"
+This folder contains the ESP32 firmware developed for the Autonomous Waste Sorting System.
+
+ 2. Hardware
+
+- ESP32 development board
+
+ 3. Purpose
+
+The ESP32 is used for hardware control like conveyor belt, servo motor that spins the bin, bin status notification system, to get readings from
+inductive proximity sensors, IR sensor and communicating with Raspberry Pi 5.
+
+ 4. Software and Tools
+
+- Arduino IDE
+- ESP32 Board 
+
+ 5. Source Code
+
+#define BLYNK_TEMPLATE_ID ""
 
 #define BLYNK_TEMPLATE_NAME "Alert notification"
 
-#define BLYNK_AUTH_TOKEN "vgvQj6SZL05Wi3XK5N_eMT_I2BkE5IEs"
+#define BLYNK_AUTH_TOKEN ""
 
 
 #include <WiFi.h>
@@ -23,7 +42,6 @@
 // ================= WIFI =================
 
 char ssid[] = "";
-
 char pass[] = "";
 
 
@@ -75,17 +93,13 @@ const int METAL_POS   = 170;
 // ================= METAL SENSOR =================
 
 #define SENSOR1 18
+
 #define SENSOR2 19
 
 
 bool lastS1 = false;
+
 bool lastS2 = false;
-
-
-
-
-
-
 
 
 
@@ -1109,3 +1123,5 @@ void stopMotors()
 
 
 }
+
+
