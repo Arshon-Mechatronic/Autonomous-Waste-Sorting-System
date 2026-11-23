@@ -32,9 +32,11 @@ C/C++ (Arduino Framework)
 
 5. Communication
 
-The ESP32 communicates with the Raspberry Pi 5 to receive waste classification results.
+The ESP32 communicates with the Raspberry Pi 5 through a USB cable using USB Serial Communication.
 
-The communication interface and data format are implemented in the firmware.
+It receives waste classification data transmitted by the Raspberry Pi 5 after the AI-based object detection process.
+
+The received information is processed by the ESP32 to determine the appropriate sorting operation.
 
  6. Source Code
 
