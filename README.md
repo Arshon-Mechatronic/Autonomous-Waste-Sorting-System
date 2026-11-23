@@ -12,19 +12,7 @@ Metal
 
 A Raspberry Pi 5 and camera are used to detect waste materials in real time.
 
-2. Project Objectives
-   
-Develop an AI-based waste detection and sorting system.
-
-Identify paper, plastic caps, and metal waste.
-
-Implement an object detection model on a Raspberry Pi 5.
-
-Test the detection system using a conveyor belt setup.
-
-Develop an automated waste separation mechanism.
-
-3. Hardware Components
+2. Hardware Components
 
 Raspberry Pi 5
 
@@ -44,7 +32,7 @@ MG995 Servo Motor
 
 Plastic Bin
 
-4. Software and Technologies
+3. Software and Technologies
 
 Python
 
@@ -58,7 +46,7 @@ Roboflow
 
 Google Colab
 
-5. Waste Detection Categories
+4. Waste Detection Categories
 
 Current YOLO model classes:
 
@@ -66,7 +54,7 @@ Paper
 
 Plastic Cap
 
-6. How It Works
+5. How It Works
 
 The camera captures images of waste materials.
 
@@ -76,7 +64,7 @@ The system identifies the waste category.
 
 The sorting mechanism can separate waste according to its category.
 
-7. Dataset and Model Training
+6. Dataset and Model Training
 
 The initial object detection dataset was prepared using Roboflow.
 
