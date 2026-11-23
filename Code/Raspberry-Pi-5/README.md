@@ -75,9 +75,9 @@ import time
 
 
 
-# =====================================
-# ESP32 SERIAL CONNECTION
-# =====================================
+
+ESP32 SERIAL CONNECTION
+-----------------------
 
 while True:
 
@@ -118,9 +118,9 @@ time.sleep(2)
 
 
 
-# =====================================
-# LOAD YOLO MODEL
-# =====================================
+
+LOAD YOLO MODEL
+---------------
 
 model = YOLO(
     "/home/pi5/YOLO_Project/best.pt"
@@ -143,9 +143,10 @@ print(
 
 
 
-# =====================================
-# CAMERA SETUP
-# =====================================
+
+CAMERA SETUP
+------------
+
 
 picam2 = Picamera2()
 
@@ -184,9 +185,9 @@ print(
 
 
 
-# =====================================
-# OBJECT MEMORY
-# =====================================
+
+OBJECT MEMORY
+-------------
 
 
 last_object = ""
@@ -195,11 +196,8 @@ last_object = ""
 
 
 
-
-
-# =====================================
-# MAIN LOOP
-# =====================================
+MAIN LOOP
+---------
 
 
 while True:
@@ -267,9 +265,9 @@ while True:
 
 
 
-        # =============================
-        # PLASTIC
-        # =============================
+        
+PLASTIC
+-------
 
 
         if "plastic" in detected:
@@ -307,10 +305,10 @@ while True:
 
 
 
-        # =============================
-        # PAPER
-        # =============================
-
+        
+ PAPER
+ -----
+        
 
         elif "paper" in detected:
 
@@ -348,9 +346,9 @@ while True:
 
 
 
-        # =============================
-        # METAL
-        # =============================
+       
+METAL
+-----       
 
 
         elif "metal" in detected:
@@ -377,11 +375,10 @@ while True:
 
 
 
-    # =================================
-    # OBJECT LEFT CAMERA
-    # RESET MEMORY
-    # =================================
-
+  
+OBJECT LEFT CAMERA
+RESET MEMORY
+------------------
 
     if not object_found:
 
