@@ -7,7 +7,9 @@ This project focuses on developing an automated waste detection and sorting syst
 The system aims to identify and classify different types of waste materials, including:
 
 Paper
-Plastic Caps
+
+Plastic Cap
+
 Metal
 
 A Raspberry Pi 5 and camera are used to detect waste materials in real time.
