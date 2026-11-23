@@ -1,24 +1,42 @@
- ESP32 Firmware
+ESP32 – Main Processing and Control Unit
 
- 1. Overview
+1. Overview
 
-This folder contains the ESP32 firmware developed for the Autonomous Waste Sorting System.
+The ESP32 acts as the main processing and control unit of the Autonomous Waste Sorting System.
 
- 2. Hardware
+It receives waste classification information from the Raspberry Pi 5 and processes the received data to manage the overall operation of the sorting system.
 
-- ESP32 development board
+2. Main Responsibilities
 
- 3. Purpose
+Receive waste detection results from the Raspberry Pi 5.
 
-The ESP32 is used for hardware control like conveyor belt, servo motor that spins the bin, bin status notification system, to get readings from
-inductive proximity sensors, IR sensor and communicating with Raspberry Pi 5.
+Process the received waste classification data.
 
- 4. Software and Tools
+Make sorting decisions based on the detected waste category.
 
-- Arduino IDE
-- ESP32 Board 
+Control the operation of the waste sorting system.
 
- 5. Source Code
+Coordinate the overall system operation.
+
+3. Hardware
+
+ESP32 Development Board
+
+4. Software and Tools
+
+Arduino IDE
+
+ESP32 Board Package
+
+C/C++ (Arduino Framework)
+
+5. Communication
+
+The ESP32 communicates with the Raspberry Pi 5 to receive waste classification results.
+
+The communication interface and data format are implemented in the firmware.
+
+ 6. Source Code
 
 #define BLYNK_TEMPLATE_ID ""
 
@@ -39,15 +57,15 @@ inductive proximity sensors, IR sensor and communicating with Raspberry Pi 5.
 
 
 
-// ================= WIFI =================
+WIFI 
+----
 
 char ssid[] = "";
 char pass[] = "";
 
 
-
-
-// ================= HX711 =================
+HX711 
+-----
 
 #define HX711_DT 4
 
@@ -61,8 +79,8 @@ float calibration_factor = 663.5;
 
 
 
-
-// ================= SERVO =================
+SERVO 
+-----
 
 Servo gateServo;
 
@@ -79,18 +97,16 @@ const int METAL_POS   = 170;
 
 
 
-
-
-// ================= IR SENSOR =================
+IR SENSOR
+---------
 
 #define IR_PIN 21
 
 
 
 
-
-
-// ================= METAL SENSOR =================
+METAL SENSOR
+------------
 
 #define SENSOR1 18
 
@@ -102,8 +118,8 @@ bool lastS1 = false;
 bool lastS2 = false;
 
 
-
- QUEUE SYSTEM
+QUEUE SYSTEM
+------------
 
 
 #define QUEUE_SIZE 10
@@ -214,9 +230,8 @@ int dequeueObject()
 
 
 
-
-
-// ================= SERVO CONTROL =================
+SERVO CONTROL 
+-------------
 
 
 bool servoBusy = false;
@@ -231,9 +246,8 @@ const unsigned long HOLD_TIME = 3500;
 
 
 
-
-
-// ================= MOTOR =================
+MOTOR 
+-----
 
 
 int pwmA = 14;
@@ -255,18 +269,12 @@ int Bin2 = 33;
 int STBY = 12;
 
 
-
 int speedVal = 230;
 
 
 
-
-
-
-
-
-// ================= BIN SYSTEM =================
-
+BIN SYSTEM 
+----------
 
 bool binFull = false;
 
@@ -288,8 +296,8 @@ const unsigned long NOTIFICATION_INTERVAL = 60000;
 
 
 
-// ================= CURRENT OBJECT =================
-
+CURRENT OBJECT 
+--------------
 
 int currentObject = 0;
 
@@ -299,15 +307,14 @@ int currentObject = 0;
 
 
 
-// ================= METAL PRIORITY =================
-
+METAL PRIORITY
+--------------
+  
 unsigned long metalTime = 0;
 
 const unsigned long METAL_PRIORITY_TIME = 2000;
 
-// =================================================
-// SETUP
-// =================================================
+- SETUP
 
 void setup()
 {
@@ -316,8 +323,8 @@ void setup()
   Serial.begin(115200);
 
 
-
-  // ================= BLYNK =================
+ BLYNK App
+ ---------
 
   Blynk.begin(
     BLYNK_AUTH_TOKEN,
@@ -328,7 +335,8 @@ void setup()
 
 
 
-  // ================= HX711 =================
+  HX711
+  ----- 
 
   scale.begin(
     HX711_DT,
@@ -348,8 +356,9 @@ void setup()
 
 
 
-  // ================= SERVO =================
-
+  SERVO
+  -----
+  
   gateServo.attach(
     SERVO_PIN
   );
@@ -364,7 +373,8 @@ void setup()
 
 
 
-  // ================= SENSORS =================
+  SENSORS
+  -------
 
   pinMode(
     IR_PIN,
@@ -389,8 +399,8 @@ void setup()
 
 
 
-  // ================= MOTOR =================
-
+ MOTOR
+ -----
 
   pinMode(
     STBY,
@@ -465,9 +475,10 @@ void setup()
 
 
 
-// =================================================
-// LOOP
-// =================================================
+
+LOOP
+----
+
 
 
 void loop()
@@ -481,9 +492,10 @@ void loop()
 
 
 
-  // =================================================
-  // RECEIVE FROM RASPBERRY PI
-  // =================================================
+ 
+  RECEIVE FROM RASPBERRY PI
+  -------------------------
+  
 
 
   if(Serial.available())
@@ -562,10 +574,9 @@ void loop()
 
 
 
-  // =================================================
-  // WEIGHT MONITORING
-  // =================================================
-
+  WEIGHT MONITORING
+  -----------------
+ 
 
   float weight =
   scale.get_units(5);
@@ -587,9 +598,8 @@ void loop()
 
 
 
-
-
-  // ================= BIN FULL =================
+  BIN FULL
+  --------
 
 
   if(weight >= 3.0 && !binFull)
@@ -627,8 +637,8 @@ void loop()
 
 
 
-  // ================= REMINDER =================
-
+  REMINDER
+  --------
 
   if(binFull)
   {
@@ -667,7 +677,8 @@ void loop()
 
 
 
-  // ================= BIN EMPTY =================
+  BIN EMPTY
+  ---------
 
 
   if(binFull && weight < 3.0)
@@ -715,9 +726,9 @@ void loop()
 
   }
 
-  // =================================================
-  // METAL DETECTION
-  // =================================================
+
+ METAL DETECTION
+ --------------- 
 
 
   int s1 =
@@ -805,10 +816,10 @@ void loop()
 
 
 
-  // =================================================
-  // SORTING PROCESS
-  // =================================================
-
+  
+  SORTING PROCESS
+  ---------------
+ 
 
   if(!servoBusy)
   {
@@ -841,10 +852,9 @@ void loop()
 
 
 
-  // =================================================
-  // SERVO TIMER
-  // =================================================
-
+ 
+  SERVO TIMER
+  -----------
 
   if(servoBusy)
   {
@@ -888,9 +898,9 @@ void loop()
 
 }   // END LOOP
 
-// =================================================
-// START SORTING FUNCTION
-// =================================================
+
+START SORTING FUNCTION
+----------------------
 
 
 void startSorting(int objectType)
@@ -1014,9 +1024,9 @@ void startSorting(int objectType)
 
 
 
-// =================================================
-// MOTOR START FUNCTION
-// =================================================
+
+MOTOR START FUNCTION
+--------------------
 
 
 void startMotors()
@@ -1074,9 +1084,9 @@ void startMotors()
 
 
 
-// =================================================
-// MOTOR STOP FUNCTION
-// =================================================
+
+MOTOR STOP FUNCTION
+-------------------
 
 
 void stopMotors()
