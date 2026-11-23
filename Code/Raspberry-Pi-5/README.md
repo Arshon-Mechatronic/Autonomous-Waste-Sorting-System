@@ -62,9 +62,11 @@ Number of classes: 2
 
 6. Communication with ESP32
 
-After detecting and classifying a waste material, the Raspberry Pi 5 sends the corresponding classification information to the ESP32.
+The Raspberry Pi 5 communicates with the ESP32 through a USB cable using USB Serial Communication.
 
-The ESP32 uses this information to make sorting decisions and control the overall system.
+After detecting and classifying a waste material using the YOLOv8n model, the Raspberry Pi 5 sends the corresponding waste classification data to the ESP32 through the USB serial connection.
+
+The ESP32 receives the detection information and uses it for further processing and control of the waste sorting system.
 
 7. Source Code
 
