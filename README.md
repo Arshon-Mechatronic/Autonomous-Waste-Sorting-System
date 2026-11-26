@@ -21,8 +21,6 @@ The system also monitors the weight of collected waste and sends a push notifica
 
 2. Hardware Components
 
-Processing and Detection
-
 Raspberry Pi 5
 
 Raspberry Pi Camera Module V2.1 (Sony IMX219)
@@ -33,9 +31,9 @@ Inductive Proximity Sensor
 
 IR Sensor
 
-Mechanical and Sorting Components
-
 Conveyor Belt
+
+TB6612FNG Motor Driver
 
 N20 Geared DC Motors
 
@@ -43,11 +41,9 @@ MG995 Servo Motor
 
 Plastic Waste Collection Bins
 
-Monitoring Components
-
 Load Cell
 
-Load Cell Amplifier Module
+HX711 Module
 
 
 3. Software and Technologies
@@ -163,7 +159,7 @@ Current Number of YOLO Classes: 2
 Current Classes: Paper and Plastic Cap
 
 
-8. Communication 
+8. Communication Architecture
 
 The Raspberry Pi 5 and ESP32 communicate through USB serial communication.
 
