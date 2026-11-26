@@ -4,7 +4,7 @@
    
 This project focuses on developing an automated waste detection and sorting system using computer vision and artificial intelligence.
 
-The system aims to identify and classify different types of waste materials, including:
+The system aims to identify and classify different types of waste materials, 
 
 Paper
 
