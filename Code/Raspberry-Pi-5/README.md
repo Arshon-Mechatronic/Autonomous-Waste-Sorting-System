@@ -8,6 +8,7 @@ It uses a camera module and a trained YOLO object detection model to identify di
 
 After identifying the waste material, the Raspberry Pi 5 sends the classification result to the ESP32 for further processing and sorting control.
 
+
 2. Main Responsibilities
 
 Capture images of waste materials using the Raspberry Pi Camera Module.
@@ -20,11 +21,13 @@ Process the detection results.
 
 Send the detected waste category to the ESP32.
 
+
 3. Hardware
 
 Raspberry Pi 5
 
 Raspberry Pi Camera Module V2.1 (Sony IMX219)
+
 
 4. Software and Technologies
 
@@ -41,6 +44,7 @@ Picamera2
 Roboflow
 
 Google Colab
+
 
 5. Object Detection Model
 
@@ -60,6 +64,7 @@ Input image size: 640 × 640
 
 Number of classes: 2
 
+
 6. Communication with ESP32
 
 The Raspberry Pi 5 communicates with the ESP32 through a USB cable using USB Serial Communication.
@@ -68,14 +73,16 @@ After detecting and classifying a waste material using the YOLOv8n model, the Ra
 
 The ESP32 receives the detection information and uses it for further processing and control of the waste sorting system.
 
+
 7. Source Code
 
 from picamera2 import Picamera2
+
 from ultralytics import YOLO
+
 import serial
+
 import time
-
-
 
 
 ESP32 SERIAL CONNECTION
