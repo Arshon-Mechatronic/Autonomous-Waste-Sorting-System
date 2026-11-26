@@ -1,46 +1,150 @@
 ESP32 – Main Processing and Control Unit
 
-1. Overview
+1. Project Overview
 
-The ESP32 acts as the main processing and control unit of the Autonomous Waste Sorting System.
+The ESP32 acts as the main processing and control unit of the Autonomous Waste Sorting System. It coordinates waste transportation, classification-based sorting, bin weight monitoring, and bin-full notifications.
 
-It receives waste classification information from the Raspberry Pi 5 and processes the received data to manage the overall operation of the sorting system.
+The system receives waste classification data from the Raspberry Pi 5, which uses a YOLO-based object detection model to identify paper and plastic waste. An inductive proximity sensor is also used to detect metal waste.
+
+Based on the detected waste category, the ESP32 controls a servo motor to redirect the sorting bin to the appropriate waste collection position.
+
+The ESP32 continuously monitors the weight of the collection bin using a load cell. When the weight reaches a predefined limit, the system stops the conveyor belt and sends a push notification to the garbage disposer through the Blynk mobile application.
+
+Once the bin is emptied, the system automatically resumes conveyor operation after a 10-second delay.
 
 
 2. Main Responsibilities
 
-Receive waste detection results from the Raspberry Pi 5.
+Control the conveyor belt using N20 geared DC motors.
 
-Process the received waste classification data.
+Receive paper and plastic classification data from the Raspberry Pi 5.
 
-Make sorting decisions based on the detected waste category.
+Detect metal waste using an inductive proximity sensor.
 
-Control the operation of the waste sorting system.
+Process waste classification information and determine the appropriate sorting operation.
 
-Coordinate the overall system operation.
+Control the servo motor to redirect the collection bin according to the detected waste category.
+
+Continuously monitor the waste collection bin weight using a load cell.
+
+Stop the conveyor belt when the predefined weight limit is reached.
+
+Send bin-full push notifications to the garbage disposer through the Blynk mobile application.
+
+Resume conveyor operation 10 seconds after the bin has been cleared.
 
 
-3. Hardware
+3. Hardware Components
 
 ESP32 Development Board
 
-4. Software and Tools
+N20 Geared DC Motors
+
+Motor Driver
+
+Servo Motor
+
+Inductive Proximity Sensor
+
+Load Cell
+
+Load Cell Amplifier Module
+
+Raspberry Pi 5
+
+12v Power Supply
+
+MP1584 Step-Down Buck Converters
+
+
+4. Software and Technologies
 
 Arduino IDE
 
-ESP32 Board Package
-
 C/C++ (Arduino Framework)
 
-5. Communication
+ESP32 Board Package
+
+Blynk IoT Platform
+
+USB Serial Communication
+
+
+5. Communication with Raspberry Pi 5
 
 The ESP32 communicates with the Raspberry Pi 5 through a USB cable using USB Serial Communication.
 
-It receives waste classification data transmitted by the Raspberry Pi 5 after the AI-based object detection process.
+The Raspberry Pi 5 performs AI-based object detection using a trained YOLO model and identifies paper and plastic waste.
 
-The received information is processed by the ESP32 to determine the appropriate sorting operation.
+After classification, the Raspberry Pi 5 transmits the detected waste category to the ESP32 through the USB serial connection.
 
- 6. Source Code
+The ESP32 processes the received classification data and coordinates the corresponding sorting operation.
+
+Metal detection is handled separately by the inductive proximity sensor connected to the ESP32.
+
+
+6. Working Principle
+
+6.1 Conveyor Belt Operation
+
+The ESP32 controls the conveyor belt using N20 geared DC motors. The conveyor transports waste materials through the detection and sorting process.
+
+
+6.2 Waste Detection and Classification
+
+The system identifies three waste categories:
+
+Paper – Detected by the Raspberry Pi 5 using YOLO object detection.
+
+Plastic – Detected by the Raspberry Pi 5 using YOLO object detection.
+
+Metal – Detected using an inductive proximity sensor.
+
+
+6.3 Automatic Waste Sorting
+
+After identifying the waste material, the ESP32 determines the appropriate sorting position.
+
+A servo motor is controlled to redirect the collection bin to the corresponding waste category, allowing the detected material to be sorted into its designated collection area.
+
+
+6.4 Bin Weight Monitoring
+
+A load cell installed beneath the collection bin continuously measures the weight of the collected waste.
+
+The weight readings are transmitted to the ESP32, which compares the measured weight against a predefined weight limit.
+
+
+6.5 Bin-Full Notification
+
+When the measured weight reaches the predefined limit:
+
+The ESP32 stops the conveyor belt.
+
+A bin-full notification is sent to the garbage disposer through the Blynk mobile application.
+
+The garbage disposer is alerted that the collection bin needs to be emptied.
+
+
+6.6 Automatic System Restart
+
+After the collection bin has been emptied, the system waits for 10 seconds before restarting the conveyor belt.
+
+The sorting process then resumes automatically.
+
+
+7. Blynk Mobile Application
+
+The Blynk IoT platform is used to notify the garbage disposer when the waste collection bin reaches its predefined weight limit.
+
+Notification feature:
+
+Push notification when the bin is full.
+
+Alerts the garbage disposer when waste needs to be removed.
+
+
+6. Source Code
 
 #define BLYNK_TEMPLATE_ID ""
 
