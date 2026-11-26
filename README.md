@@ -14,6 +14,7 @@ Metal
 
 A Raspberry Pi 5 and camera are used to detect waste materials in real time.
 
+
 2. Hardware Components
 
 Raspberry Pi 5
@@ -33,6 +34,7 @@ IR Sensor
 MG995 Servo Motor
 
 Plastic Bin
+
 
 3. Software and Technologies
 
@@ -56,7 +58,8 @@ Paper
 
 Plastic Cap
 
-5. How It Works
+
+5. Working Principle
 
 The camera captures images of waste materials.
 
@@ -65,6 +68,7 @@ The YOLO object detection model processes the images.
 The system identifies the waste category.
 
 The sorting mechanism can separate waste according to its category.
+
 
 6. Dataset and Model Training
 
