@@ -6,6 +6,7 @@ The ESP32 acts as the main processing and control unit of the Autonomous Waste S
 
 It receives waste classification information from the Raspberry Pi 5 and processes the received data to manage the overall operation of the sorting system.
 
+
 2. Main Responsibilities
 
 Receive waste detection results from the Raspberry Pi 5.
@@ -17,6 +18,7 @@ Make sorting decisions based on the detected waste category.
 Control the operation of the waste sorting system.
 
 Coordinate the overall system operation.
+
 
 3. Hardware
 
